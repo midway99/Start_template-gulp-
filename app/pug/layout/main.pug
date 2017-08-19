@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(href="./css/style.min.css", rel="stylesheet")
+        link(rel="shortcut icon", href="./images/favicons/chrome-touch-icon.png" type="image/png")
+        title
+            block title
+    body
+        .wrapper
+            include ../modules/header
+            include ../modules/menu
+            block content
+            include ../modules/footer
+    script(src="./libs/jquery/dist/jquery.min.js")
+    script(src="../app/js/libs.min.js")
+    script(src="../app/js/common.min.js")

@@ -1,0 +1,5 @@
+[0817/231555.983:ERROR:process_info.cc(632)] range at 0x83aa261c00000000, size 0x188 fully unreadable
+[0817/231555.987:ERROR:process_info.cc(632)] range at 0x83aa263c00000000, size 0x188 fully unreadable
+[0817/231555.987:ERROR:process_info.cc(632)] range at 0x0, size 0x188 fully unreadable
+[0817/231556.147:ERROR:process_reader_win.cc(242)] ReadMemory at 0x188866b70f9 of 512 bytes failed: «апрос ReadProcessMemory или WriteProcessMemory был выполнен только частично. (0x12B)
+[0817/231556.147:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed

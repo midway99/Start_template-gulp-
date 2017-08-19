@@ -1,0 +1,180 @@
+//использования @include _название миксина_( принимаеме аргументы,...)
+
+// margin 0 auto
+@mixin push--auto() {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+
+
+//добавялть в псевдоэлементы
+@mixin pelem() {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+//равнобедренные треугольники для коментариев или просто треугольники
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $round {
+        border-radius: 3px;
+    }
+    @if $direction==down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round( $size / 2.5);
+    }
+    @else if $direction==up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round( $size / 2.5);
+    }
+    @else if $direction==right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    }
+    @else if $direction==left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}
+
+ //выравниявание по центру экрана включая все случаи
+ //https://webformyself.com/centrirovanie-s-pomoshhyu-sass/
+
+ @mixin center($width: null, $height: null) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+   
+    @if not $width and not $height {
+      transform: translate(-50%, -50%);
+    } @else if $width and $height {
+      width: $width;
+      height: $height;
+      margin: -($width / 2) #{0 0} -($height / 2);
+    } @else if not $height {
+      width: $width;
+      margin-left: -($width / 2);
+      transform: translateY(-50%);
+    } @else {
+      height: $height;
+      margin-top: -($height / 2);
+      transform: translateX(-50%);
+    }
+  }
+
+//перевод из пикселей в ремы
+@mixin rem($size) {
+    return: ($size/16)rem;
+}
+
+//краткое подключение шрифтов 
+//пример @include fonts (etc..)
+@mixin fonts ($size: false, $colour: false, $weight: false,  $lh: false) {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    @if $size { font-size: $size; }
+    @if $colour { color: $colour; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+  }
+
+
+
+//font-face
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// горизонтальное выравнивание для inline блока
+// пример: @include gorizontal-ib;
+@mixin gorizontal-ib(){
+  text-align: justify;
+  line-height: 0;
+  font-size: 0;
+  text-justify: newspaper;
+  zoom: 1;
+  text-align-last: justify;
+
+  &:after{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 0px;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
+// вертикальное выравнивание для inline блока
+// пример: @include vertical-ib;
+@mixin vertical-ib(){
+  text-align: center;
+  font-size: 0;
+
+  &:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+  }
+}
+
+
+
+
+
+
