@@ -1,21 +1,21 @@
-  const gulp = require('gulp'), // Сам сборщик Gulp
-      sass = require('gulp-sass'), // Пакет компиляции SASS/SCSS
-      mmq = require('gulp-merge-media-queries'), // Плагин, соединющий медиа-запросы
-      pug = require('gulp-pug'), // Пакет компиляции Pug (бывш. Jade)
-      browserSync = require('browser-sync'), // Запуск локального сервера
-      concat = require('gulp-concat'), // Пакет конкатенации файлов
-      uglifyjs = require('gulp-uglifyjs'), // Пакет минификации файлов JavaScript
-      cssnano = require('gulp-cssnano'), // Пакет минификации файлов CSS
-      rename = require('gulp-rename'), // Переименовывание файлов
-      uncss = require('gulp-uncss'), // Очищает все неиспользуемые стили
-      del =   require('del'), // Удаление файлов директории
-      imagemin = require('gulp-imagemin'), // Пакет минификации изображений (в зависимостях также идут дополнительные пакеты)
-      cache = require('gulp-cache'), // Работа с кэшом
-      autoprefixer = require('gulp-autoprefixer'), // Пакет расстановки вендорных перфиксов
-      plumber = require('gulp-plumber'), // Предотвращает разрыв pipe'ов, вызванных ошибками gulp-плагинов
-      notify = require('gulp-notify'), // Выводит уведомления
-      eslint = require('gulp-eslint'), // Линтинг JS-кода
-      importFile = require('gulp-file-include'), // Импорт файлов (@@include ('path/to/file'))
+  const gulp = require('gulp'), 
+      sass = require('gulp-sass'), 
+      mmq = require('gulp-merge-media-queries'), 
+      pug = require('gulp-pug'), 
+      browserSync = require('browser-sync'), 
+      concat = require('gulp-concat'), 
+      uglifyjs = require('gulp-uglifyjs'), 
+      cssnano = require('gulp-cssnano'), 
+      rename = require('gulp-rename'), 
+      uncss = require('gulp-uncss'), 
+      del =   require('del'), 
+      imagemin = require('gulp-imagemin'),
+      cache = require('gulp-cache'), 
+      autoprefixer = require('gulp-autoprefixer'), 
+      plumber = require('gulp-plumber'), 
+      notify = require('gulp-notify'),
+      eslint = require('gulp-eslint'), 
+      importFile = require('gulp-file-include'), 
       nicehtml = require('gulp-html-beautify'),
       sourcemaps = require('gulp-sourcemaps'),
       spritesmith = require('gulp.spritesmith');
@@ -131,7 +131,7 @@
 
 
 
-  // Подключаем JS файлы бибилотек из директории 'app/libs/', установленные bower'ом, конкатенируем их и минифицируем
+  
   gulp.task('jsLibs', ['scripts'], function() {
       return gulp.src([
               //здесь все js библиотеки
@@ -175,7 +175,7 @@
   });
 
 
-  // Очищаем директорию билда 'dist/'
+  
   gulp.task('clean', () => {
       return del.sync('dist/**/*');
   });
