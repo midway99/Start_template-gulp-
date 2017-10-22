@@ -8,8 +8,6 @@
     }
 }
 
-
-
 //добавялть в псевдоэлементы
 @mixin pelem() {
     content: $content;
@@ -25,6 +23,7 @@
     @if $round {
         border-radius: 3px;
     }
+
     @if $direction==down {
         border-left: $size solid transparent;
         border-right: $size solid transparent;
@@ -91,61 +90,12 @@
     @if $lh { line-height: $lh; }
   }
 
-
-
-//font-face
-// =============================================================================
-// String Replace
-// =============================================================================
-
-@function str-replace($string, $search, $replace: "") {
-	$index: str-index($string, $search);
-
-	@if $index {
-		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-	}
-
-	@return $string;
-}
-
-// =============================================================================
-// Font Face
-// =============================================================================
-
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
-	$src: null;
-
-	$extmods: (
-		eot: "?",
-		svg: "#" + str-replace($name, " ", "_")
-	);
-
-	$formats: (
-		otf: "opentype",
-		ttf: "truetype"
-	);
-
-	@each $ext in $exts {
-		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
-	}
-
-	@font-face {
-		font-family: quote($name);
-		font-style: $style;
-		font-weight: $weight;
-		src: $src;
-	}
-}
-
 // горизонтальное выравнивание для inline блока
 // пример: @include gorizontal-ib;
 @mixin gorizontal-ib(){
   text-align: justify;
   line-height: 0;
   font-size: 0;
-  text-justify: newspaper;
   zoom: 1;
   text-align-last: justify;
 

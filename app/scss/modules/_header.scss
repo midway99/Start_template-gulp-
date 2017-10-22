@@ -1,2 +1,19 @@
-@import "../mixins.scss";
+@import "../_mixins.scss";
 @import "../_vars.scss";
+
+.index {
+  display: block;
+  margin: 0 auto;
+  margin: 2%;
+  padding: 13px;
+  padding: 5px;
+  margin: 3px;
+  box-sizing: border-box;
+  margin: 5px;
+
+  .inidex {
+    box-sizing: border-box;
+    border: 1px solid #d3d;
+    border:1px solid #f4fr;
+  }
+}

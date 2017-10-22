@@ -3,43 +3,25 @@
 @import "libs";
 @import "fonts";
 
-
-// Общие стили
-@import 'common_styles.scss';
-
-// МОДУЛИ
-// Стили шапки
-@import 'modules/header.scss';
-// Стили футера
-@import 'modules/footer.scss';
-// Стили меню
-@import 'modules/menu.scss';
-// СТРАНИЦЫ
-// Стили контента/страниц
-@import 'pages/index.scss';
-//
-
-
 html {
-    font-size: 16px;
-    line-height: 1;
+  font-size: 16px;
+  line-height: 1;
 }
-
 
 ul,
 li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color:blue;
+  text-decoration: none;
+  color: blue;
 }
 
 audio,
@@ -48,62 +30,69 @@ iframe,
 img,
 svg,
 video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 section {
-    position: relative;
+  position: relative;
 }
 
 input,
 select,
 button {
-    outline: none;
+  outline: none;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .show {
-    display: block;
+  display: block;
 }
 
 .clearfix {
-    &:after {
-        content: '';
-        display: table;
-        line-height: 0;
-        clear: both;
-    }
+  &:after {
+    content: '';
+    display: table;
+    line-height: 0;
+    clear: both;
+  }
 }
-
-
-
-
-
-
 
 //cтили проекта
 .wrapper {
-    width: 100%;
-    max-width: 1270px;
-    margin: 0 auto;
-    position: relative;
-    background: #000;
-    border:2px solid red;
-   // overflow-x: hidden; 
+  width: 100%;
+  max-width: 1270px;
+  margin: 0 auto;
+  position: relative;
+
+  // overflow-x: hidden;
 }
 
+// Общие стили
+@import 'common_styles.scss';
+
+// МОДУЛИ
+// Стили шапки
+@import 'modules/_header.scss';
+// Стили футера
+@import 'modules/footer.scss';
+// Стили меню
+@import 'modules/menu.scss';
+// СТРАНИЦЫ
+// Стили контента/страниц
+@import 'pages/index.scss';
+//
 
 
